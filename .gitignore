@@ -1,6 +1,8 @@
-# 忽略上传matlab文件
 # matlab.gitignore
 #####################################
+
+# 忽略上传matlab文件夹
+matlab/
 
 # Windows default autosave extension
 *.asv
