@@ -1,6 +1,9 @@
 # matlab.gitignore
 #####################################
 
+# 忽略上传.gitignore文件
+#.gitignore
+
 # 忽略上传matlab文件夹
 matlab/
 
