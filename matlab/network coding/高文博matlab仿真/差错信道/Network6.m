@@ -15,7 +15,8 @@ throughput=zeros(1,20);
 output=0;
 empty=zeros(1,data_bits);
 prate=11*10^6; %物理链路层速率
-T=data_bits/prate; %发送一次数据包所需时间
+% T = data_bits/prate; %发送一次数据包所需时间 7.7018e-04
+T = 0.78e-3;
 %接收缓存
 Atemp=empty;
 Btemp=empty;
@@ -28,7 +29,7 @@ Btrans=0;
 Ctrans=0;
 Dtrans=0;
 Ttrans=0;
-%接收标志
+%接收标志 1成功0失败
 RA=1;LA=0;
 RB=0;LB=0;
 RC=1;LC=1;
@@ -44,7 +45,7 @@ for time=1:slot
         case 0 %B T 节点
             %B节点
             if Btrans==1
-                Btrans=condition1(Btrans);
+                Btrans=condition1(Btrans); %重传后的状态
                 if Btrans==0
                     LB=LB-1;
                     if Atrans==0
@@ -157,7 +158,7 @@ for time=1:slot
             end
             
             %T节点
-             if Ttrans==1
+            if Ttrans==1
                 Ttrans=condition1(1);
                 if Ttrans==0
                     tbegin(i)=time;
@@ -167,7 +168,7 @@ for time=1:slot
                     TR=xor(TR,T2H);
                     if Dtrans==0
                         DR=xor(xor(DR,TR),Dtemp);
-                        Dtemp=empty;      
+                        Dtemp=empty;
                     else
                         Dtemp=TR;
                     end
@@ -190,15 +191,15 @@ for time=1:slot
                     end
                     RD=RD+1;
                 end
-             end   
+            end
             
         case 1  %H C节点
             %H节点
             if Htrans==1
                 Htrans=condition1(1);
                 if Htrans==0
-                   tbegin(i)=time;
-                   i=i+1;
+                    tbegin(i)=time;
+                    i=i+1;
                     RH=RH-1;
                     H2T=randi([0,1],1,data_bits);
                     HR=xor(HR,H2T);
@@ -214,8 +215,8 @@ for time=1:slot
             elseif RH==1
                 Htrans=condition1(1);
                 if Htrans==0
-                   tbegin(i)=time;
-                   i=i+1;
+                    tbegin(i)=time;
+                    i=i+1;
                     RH=RH-1;
                     H2T=randi([0,1],1,data_bits);
                     HR=xor(HR,H2T);
@@ -313,7 +314,7 @@ for time=1:slot
                             Btemp=CR;
                         end
                     else
-                        Dtemp=CR;    
+                        Dtemp=CR;
                         if Btrans==0
                             BR=xor(xor(BR,CR),Btemp);
                             Btemp=empty;
@@ -517,8 +518,8 @@ for time=1:slot
                     TR=xor(DR,T2H);
                     if ~isequal(TR,empty)&&~isequal(DR,empty)
                         output=output+1;
-                       tend(j)=time;
-                       j=j+1;
+                        tend(j)=time;
+                        j=j+1;
                     end
                     if Ctrans==0
                         CR=xor(xor(DR,CR),Ctemp);
@@ -532,8 +533,8 @@ for time=1:slot
                     TR=xor(DR,T2H);
                     if ~isequal(TR,empty)&&~isequal(DR,empty)
                         output=output+1;
-                       tend(j)=time;
-                       j=j+1;
+                        tend(j)=time;
+                        j=j+1;
                     end
                     LT=LT+1;
                 elseif Dtrans==2

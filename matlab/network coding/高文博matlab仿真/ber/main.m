@@ -5,10 +5,10 @@ ber2=zeros(1,length(SNR));
 ber3=zeros(1,length(SNR));
 
 for i=1:length(SNR)
-    ber(i)=ber6(SNR(i));
+    ber(i)=ber5(SNR(i));
     ber1(i)=0.5*(1-1/sqrt(1+10*10^(-SNR(i)/10)));
     ber2(i)=0.5*(1-1/sqrt(1+6*10^(-SNR(i)/10)));
-    ber3(i)=test(SNR(i));
+    %ber3(i)=test(SNR(i));
 end
 semilogy(SNR,ber,'bs-');
 hold on;
