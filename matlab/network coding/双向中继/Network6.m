@@ -47,7 +47,7 @@ function [throughput] = Network6 (SNR)
             case 0%B T 节点
                 %B节点
                 if Btrans == 1
-                    Btrans = TRANSR(SNR, BR);
+                    Btrans = TRANSR(SNR, BR); % 向右重传
 
                     if Btrans == 0
                         LB = LB - 1;
