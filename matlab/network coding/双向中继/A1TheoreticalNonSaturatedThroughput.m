@@ -1,3 +1,4 @@
+% 算法1理论不饱和吞吐量
 function [throughput] = A1TheoreticalNonSaturatedThroughput (time)
 
     alpha = 0.9;

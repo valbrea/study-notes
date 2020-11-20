@@ -1,3 +1,4 @@
+% 算法1理论饱和吞吐量
 function [throughput] = A1TheoreticalSaturatedThroughput (time)
 
     N = 4; %中继节点个数

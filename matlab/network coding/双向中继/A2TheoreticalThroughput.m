@@ -1,5 +1,5 @@
+% 算法2理论吞吐量（未完成）
 function [throughput] = A2TheoreticalThroughput (time, gamma)
-n = 4;
 Tr = mod(n + 1, 3) + 2 * n;
 data_bits = 8472;
 

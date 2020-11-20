@@ -1,4 +1,4 @@
-function [ throughput ] = Noerror5 (slot )
+function [ throughput ] = A1Noerror5 (slot )
 
 data_bits = 8472;
 %每个节点的初始数据为空
@@ -53,6 +53,9 @@ for time=1:slot %仿真时间
             AR=xor(AR,TR);
 
     end
-    throughput=output/(time+1);
+    throughput(time)=output/(time+1);
 end
+figure;
+plot(throughput, 'r');
+xlabel('timeslot'), ylabel('throughput');
 end

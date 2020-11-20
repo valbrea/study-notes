@@ -56,7 +56,7 @@ for time=1:slot %·ÂÕæÊ±¼ä
     end
     throughput(time) = output / (time + 1);
 end
-figure;
-plot(throughput, 'r');
-xlabel('timeslot'), ylabel('throughput');
+% figure;
+% plot(throughput, 'r');
+% xlabel('timeslot'), ylabel('throughput');
 end
