@@ -31,12 +31,12 @@ SNC4_mean = SNC4_valid_mean(:, xaxis);
 
 figure, hold on;
 % , 'MarkerIndices', 1 : 60 : slot
-plot (xaxis, A3_mean, '-o');
-plot (xaxis, A2_mean, '-^');
-plot (xaxis, DFNC4_mean, '-d');
-plot (xaxis, SNC4_mean, '-s');
+plot (xaxis, A3_mean, 'k-o');
+plot (xaxis, A2_mean, 'k-^');
+plot (xaxis, DFNC4_mean, 'k-d');
+plot (xaxis, SNC4_mean, 'k-s');
 
-legend( '本发明', '文献[4]', '文献[2]', '文献[3]');
+legend( '本发明', 'DF-NC-ARQ', 'M-DF-NC', 'SNC-DM');
 xlabel('仿真时隙数');
 ylabel('有效传输吞吐量');
 % title(['信噪比=', num2str(SNR), ', 循环次数=', num2str(loop)]);
