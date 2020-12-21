@@ -5,7 +5,7 @@ int main()
 {
     char ch1; 
     int space_count(0), tab_count(0), other_count(0);
-    while ((ch1 = cin.get()) != '#')
+    while ((ch1 = cin.get()) != '#') // 因为要计算空格和tab 所以需要用cin.get()， 如果用cin >> ch1则会跳过空格
     {
         if (ch1 == ' ')
             space_count++;
