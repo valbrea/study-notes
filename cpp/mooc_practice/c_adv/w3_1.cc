@@ -20,7 +20,8 @@
 using namespace std;
 int main()
 {
-    char string[501] = {0};
+    char string[501] = {0}, reverse[21] = {0};
+    
     cin.get(string, 501)
     while(string != ' ' )
     
