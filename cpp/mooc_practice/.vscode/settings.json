@@ -1,6 +1,18 @@
 {
     "files.associations": {
         "iostream": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "*.tcc": "cpp",
+        "bitset": "cpp",
+        "memory_resource": "cpp",
+        "random": "cpp",
+        "limits": "cpp",
+        "regex": "cpp",
+        "valarray": "cpp",
+        "algorithm": "cpp",
+        "complex": "cpp",
+        "functional": "cpp"
     }
 }

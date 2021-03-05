@@ -17,13 +17,37 @@
 */
 #include <iostream>
 #include <iomanip>
+#include <cstring>
 using namespace std;
+char str[501] = {0};
+int i(0);
+int recur();
 int main()
 {
-    char string[501] = {0}, reverse[21] = {0};
+    cin.getline(str, 501);
+    int length = strlen(str);
     
-    cin.get(string, 501)
-    while(string != ' ' )
-    
+    while (i < length)
+    {
+        if (recur() == 1)
+            cout << ' ';
+    }
+    cout << endl;
+
     return 0;
+}
+int recur() // 存在问题：没有调用参数，直接用了全局变量str和i，虽然简单但感觉不太规范。 应该用多返回值来解答！！！
+{
+    char c = str[i];
+    ++i;
+    if (c != ' ' && c != '\0')
+    {
+        recur();
+        cout << c;
+        return 1;
+    }
+    else if (c == ' ')
+        return 1; // 存在问题： 这个返回值没用，并没有接受
+    else if (c == '\0')
+        return 0; // 存在问题： 这个返回值也没用
 }
