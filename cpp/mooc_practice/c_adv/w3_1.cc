@@ -21,33 +21,42 @@
 using namespace std;
 char str[501] = {0};
 int i(0);
-int recur();
+int recur(char str[], int s);
 int main()
 {
     cin.getline(str, 501);
-    int length = strlen(str);
-    
-    while (i < length)
+    int back(0);
+
+    while (i < strlen(str))
     {
-        if (recur() == 1)
+        back = recur(str, i);
+        switch (back)
+        {
+        case 0:
             cout << ' ';
+            break;
+        case 1:
+            cout << endl;
+            break;
+        default:
+            break;
+        }
     }
-    cout << endl;
 
     return 0;
 }
-int recur() // 存在问题：没有调用参数，直接用了全局变量str和i，虽然简单但感觉不太规范。 应该用多返回值来解答！！！
+int recur(char str[], int s) //
 {
-    char c = str[i];
-    ++i;
+    char c = str[s];
+    int b(0);
     if (c != ' ' && c != '\0')
     {
-        recur();
+        b = recur(str, s + 1);
         cout << c;
-        return 1;
+        return b; // 这个返回值 = 递归到最后的其他情况的返回值。
     }
     else if (c == ' ')
-        return 1; // 存在问题： 这个返回值没用，并没有接受
+        return (i = s + 1, 0);
     else if (c == '\0')
-        return 0; // 存在问题： 这个返回值也没用
+        return (i = s + 1, 1);
 }

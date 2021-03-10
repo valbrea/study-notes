@@ -18,38 +18,59 @@
 #include <iostream>
 #include <cstring>
 using namespace std;
+int l(0), r(0);
 bool flag(0);
-int match(char str[], int start);
+char output[101] = {0};
+int match(char str[], int s);
 int main()
 {
-    char str[101] = {0};
-    while (cin.getline(str, 101))
+    char input[101] = {0};
+    int back(0);
+    while (cin.getline(input, 101))
     {
-        cout << str << endl;
-        (left, right) = match(str, 0);
+        cout << input << endl;
+        match(input, 0);
+        cout << output << endl;
+        l = 0, r = 0;
     }
 
     return 0;
 }
-int match(char str[], int start)
+int match(char str[], int s)
 {
-    int next(0);
-    if (strlen(str) == 0)
-        return start;
-    if (str[start] == '(')
+    switch (str[s])
     {
-        next = match(str, start + 1);
-        if(flag == 1)
-            cout << ' ';
-        else 
-            cout << '$'; 
+    case '(':
+        l++; // 传递时统计左括号数量
+        match(str, s + 1);
+        if (r > 0)
+        { // 回溯时判断')'的数量，判断该'('左边还有没有')'， 如果还有就打空格，否则打'$'
+            output[s] = ' ';
+            r--;
+        }
+        else
+            output[s] = '$';
+        return 0;
+        break;
+    case ')':
+        if (l > 0)
+        { // 传递时判断'('的数量，判断该')'左边还有没有'('， 如果还有就打空格，否则打'$'
+            output[s] = ' ';
+            l--;
+        }
+        else
+            output[s] = '?';
+        match(str, s + 1);
+        r++; // 回溯时统计右括号数量。
+        return 0;
+        break;
+    case '\0':
+        return (flag = 1, 1);
+        break;
+    default:
+        match(str, s + 1);
+        output[s] = ' ';
+        return 0;
+        break;
     }
-    else if (str[start] == ')')
-
-    else
-    {
-        return match(str, start + 1);
-    }
-    
-        
 }
