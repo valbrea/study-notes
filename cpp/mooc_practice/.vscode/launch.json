@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "CodeLLDB - 生成和调试活动文件",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "C/C++: clang++ 生成活动文件"
+        },
+        {
             "name": "g++ - 生成和调试活动文件",
             "type": "cppdbg",
             "request": "launch",
@@ -13,7 +22,7 @@
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "console": "externalTerminal",
+            // "console": "externalTerminal",
             "MIMode": "gdb",
             "setupCommands": [
                 {
