@@ -11,7 +11,7 @@ int main()
             case 1: cout << "1 ";
             case 2: cout << "2 ";
             default : cout << "oh no!";
-        }
+        } 
         cout << endl;
     }
     
